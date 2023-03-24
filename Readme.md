@@ -168,6 +168,70 @@ After the pre-training phase, the LLM is fine-tuned on a smaller, task-specific 
 
 By leveraging pre-training and fine-tuning techniques, LLMs can achieve state-of-the-art performance on a wide variety of NLP tasks, while also benefiting from the knowledge and understanding gained during the unsupervised pre-training phase.
 
+## Pre-training and Fine-tuning a GPT Model
+
+This example demonstrates how to pre-train and fine-tune a GPT model using the Hugging Face Transformers library. For illustration purposes, we use GPT-2 as the base model.
+
+### 1. Pre-training
+
+To pre-train a GPT-2 model from scratch, you first need a large corpus of text data. Pre-training involves unsupervised training on this data using a language modeling objective.
+
+**Note**: Pre-training a GPT model from scratch can be computationally expensive and time-consuming. It is generally recommended to use a pre-trained model and fine-tune it on your specific task.
+
+Follow the Hugging Face guide on pre-training a GPT-2 model: https://huggingface.co/blog/how-to-train
+
+### 2. Fine-tuning
+
+Once you have a pre-trained GPT-2 model (either trained from scratch or obtained from Hugging Face Model Hub), you can fine-tune it on a specific task using supervised training with labeled data.
+
+```python
+import torch
+from transformers import GPT2LMHeadModel, GPT2Tokenizer, GPT2Config, TextDataset, DataCollatorForLanguageModeling
+from transformers import Trainer, TrainingArguments
+
+# Load the pre-trained GPT-2 model and tokenizer
+model_name = "gpt2"
+config = GPT2Config.from_pretrained(model_name)
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+model = GPT2LMHeadModel.from_pretrained(model_name, config=config)
+
+# Prepare the training and validation datasets
+train_file = "path/to/train.txt"
+val_file = "path/to/val.txt"
+train_dataset = TextDataset(tokenizer=tokenizer, file_path=train_file, block_size=128)
+val_dataset = TextDataset(tokenizer=tokenizer, file_path=val_file, block_size=128)
+
+# Define the data collator for batching
+data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+
+# Set up the training arguments
+training_args = TrainingArguments(
+    output_dir="path/to/output",
+    overwrite_output_dir=True,
+    num_train_epochs=3,
+    per_device_train_batch_size=8,
+    per_device_eval_batch_size=8,
+    eval_steps=400,
+    save_steps=800,
+    warmup_steps=500,
+    prediction_loss_only=True,
+    weight_decay=0.01,
+    logging_dir="path/to/logging",
+)
+
+# Create the Trainer
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    data_collator=data_collator,
+    train_dataset=train_dataset,
+    eval_dataset=val_dataset,
+)
+
+# Fine-tune the model
+trainer.train()
+```
+
 ### References
 
 To gain a deeper understanding of pre-training and fine-tuning techniques used in LLMs, we recommend the following papers:
