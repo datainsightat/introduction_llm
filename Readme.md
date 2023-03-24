@@ -25,14 +25,15 @@ In conclusion, LLMs have transformative potential, but it is crucial to balance 
 2. [History of Large Language Models](#History-of-Large-Language-Models)
 3. [Architecture of Large Language Models](#architecture-oflarge-language-models)
 4. [Pre-training and Fine-tuning Techniques](#Pre-training-and-Fine-tuning-Techniques)
-5. [Emergence of Capabilities in LLMs Based on Complexity](#Emergence-of-Capabilities-in-LLMs-Based-on-Complexity)
-6. [Popular Large Language Models: GPT, BERT, and T5](#popular)
-7. [Applications and Use Cases of Large Language Models](#applications)
-8. [Limitations and Ethical Considerations](#limitations)
-9. [Prompting Techniques and Interacting with Large Language Models](#interaction)
-10. [Open Source LLMs][#opensource]
-11. [Future Development of Large Language Models and Implications for Humans](#future)
-12. [External References](#external-references)
+5. [Embeddings in Large Language Models](#Embeddings-in-Large-Language-Models)
+6. [Emergence of Capabilities in LLMs Based on Complexity](#Emergence-of-Capabilities-in-LLMs-Based-on-Complexity)
+7. [Popular Large Language Models: GPT, BERT, and T5](#Popular-Large-Language-Models:-GPT,-BERT,-and-T5)
+8. [Applications and Use Cases of Large Language Models](#applications)
+9. [Limitations and Ethical Considerations](#Limitations-and-Ethical-Considerations)
+10. [Prompting Techniques and Interacting with Large Language Models](#Prompting-Techniques-and-Interacting-with-Large-Language-Models)
+11. [Open Source LLMs](#Open-Source-LLMs)
+12. [Future Development of Large Language Models and Implications for Humans](#Future-Development-of-Large-Language-Models-and-Implications-for-Humans)
+13. [External References](#external-references)
 
 ## Overview
 
@@ -180,6 +181,22 @@ After the pre-training phase, the LLM is fine-tuned on a smaller, task-specific 
 
 By leveraging pre-training and fine-tuning techniques, LLMs can achieve state-of-the-art performance on a wide variety of NLP tasks, while also benefiting from the knowledge and understanding gained during the unsupervised pre-training phase.
 
+### Fine-Tuning Large Language Models with Reinforcement Learning from Human Feedback
+
+Fine-tuning LLMs with reinforcement learning from human feedback involves a process of iteratively updating the model based on human-generated rewards. This approach enables the model to learn from human preferences, improving its performance on specific tasks or domains.
+
+The fine-tuning process can be broken down into the following steps:
+
+1. **Collecting human feedback**: Initially, a dataset is created with human-generated feedback. This may include demonstrations of correct behavior, comparisons of different model-generated outputs, or explicit rewards assigned to model outputs. This feedback helps establish a ground truth for the model to learn from.
+
+2. **Creating a reward model**: Based on the collected human feedback, a reward model is trained to predict the quality of model-generated outputs. This reward model serves as a proxy for human judgment and is used to guide the fine-tuning process.
+
+3. **Performing reinforcement learning**: The LLM is fine-tuned using reinforcement learning algorithms, such as Proximal Policy Optimization (PPO) or REINFORCE, guided by the reward model. The model learns to generate outputs that maximize the predicted rewards, which are a proxy for human preferences.
+
+4. **Iterative improvement**: The fine-tuning process is performed iteratively. As the model improves, additional human feedback is collected, and the reward model is updated. The LLM is then fine-tuned using the updated reward model, resulting in further performance improvements.
+
+This approach allows LLMs to learn from human preferences and adapt their behavior accordingly. By leveraging reinforcement learning from human feedback, LLMs can be fine-tuned to perform better on specific tasks, generate more desirable outputs, and avoid potential pitfalls associated with supervised learning from static datasets.
+
 ## Pre-training and Fine-tuning a GPT Model
 
 This example demonstrates how to pre-train and fine-tune a GPT model using the Hugging Face Transformers library. For illustration purposes, we use GPT-2 as the base model.
@@ -257,6 +274,68 @@ To gain a deeper understanding of pre-training and fine-tuning techniques used i
 4. Houlsby, N., et al. (2019). [Parameter-Efficient Transfer Learning for NLP](https://arxiv.org/abs/1902.00751) - This paper proposes the use of adapters, small task-specific modules added between layers of pre-trained LLMs, for more computationally efficient and scalable fine-tuning.
 
 By reading these papers, you will gain a deeper understanding of the underlying principles and motivations behind the development and application of pre-training and fine-tuning techniques in large language models.
+
+## Embeddings in Large Language Models
+
+Embeddings are a crucial aspect of large language models (LLMs) like GPT. They convert words, subwords, or characters into continuous vectors, capturing semantic and syntactic information in a lower-dimensional space. This section discusses the role of embeddings in GPT and provides a specific example.
+
+### 1. Tokenization and Embeddings in GPT
+
+In GPT, input text is first tokenized into subword units called tokens. These tokens are then mapped to their corresponding embeddings before being fed into the Transformer architecture.
+
+The GPT model uses Byte Pair Encoding (BPE) as its tokenization method, which enables it to split words into smaller subword units. This approach allows GPT to handle out-of-vocabulary words effectively and generalize to new words.
+
+### 2. Embedding Layer
+
+The embedding layer in GPT is responsible for converting tokens into continuous vectors. It consists of a learnable weight matrix, with each row representing the embedding of a specific token.
+
+For example, consider the following sentence:
+
+```
+"The quick brown fox jumps over the lazy dog."
+```
+
+
+After tokenization, the sentence might be represented as:
+
+```
+["the", " quick", " brown", " fox", " jumps", " over", " the", " lazy", " dog", "."]
+```
+
+
+Each token is then mapped to its corresponding embedding using the embedding layer. These embeddings are used as input to the GPT model.
+
+### 3. Positional Embeddings
+
+GPT also incorporates positional embeddings to capture the position of each token in the input sequence. These embeddings are added to the token embeddings before being fed into the Transformer architecture. Positional embeddings enable the model to understand the order of tokens in a sequence and capture the dependencies between them.
+
+### 4. Example
+
+Here is an example illustrating the use of embeddings in the GPT model:
+
+```python
+from transformers import GPT2Tokenizer, GPT2Model
+
+# Load the pre-trained GPT-2 model and tokenizer
+model_name = "gpt2"
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+model = GPT2Model.from_pretrained(model_name)
+
+# Tokenize the input text
+text = "The quick brown fox jumps over the lazy dog."
+input_ids = tokenizer.encode(text, return_tensors="pt")
+
+# Get the embeddings for the input tokens
+embeddings = model.transformer.wte(input_ids)
+
+# Add positional embeddings
+position_ids = torch.arange(0, input_ids.size(-1)).unsqueeze(0)
+position_embeddings = model.transformer.wpe(position_ids)
+input_embeddings = embeddings + position_embeddings
+
+# Use the combined embeddings as input to the GPT-2 model
+output = model(inputs_embeds=input_embeddings)
+```
 
 ## Emergence of Capabilities in LLMs Based on Complexity
 
