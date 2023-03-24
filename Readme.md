@@ -609,6 +609,7 @@ To further enhance your understanding of large language models, we recommend the
 
 ### Web Pages
 
+0. OpenAI Mission Statement: [Planning for AGI and beyond](https://openai.com/blog/planning-for-agi-and-beyond))
 1. OpenAI Blog: [Better Language Models and Their Implications](https://openai.com/blog/better-language-models/)
 2. Google AI Blog: [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://ai.googleblog.com/2018/11/open-sourcing-bert-state-of-art-pre.html)
 3. Hannibal046: [Awesome-LLM](https://github.com/Hannibal046/Awesome-LLM)
