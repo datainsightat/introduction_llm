@@ -450,6 +450,8 @@ To further enhance your understanding of large language models, we recommend the
 
 1. OpenAI Blog: [Better Language Models and Their Implications](https://openai.com/blog/better-language-models/)
 2. Google AI Blog: [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://ai.googleblog.com/2018/11/open-sourcing-bert-state-of-art-pre.html)
+3. Hannibal046: [Awesome-LLM](https://github.com/Hannibal046/Awesome-LLM)
+4. Yao Fu: [How does GPT Obtain its Ability? Tracing Emergent Abilities of Language Models to their Sources](https://yaofu.notion.site/How-does-GPT-Obtain-its-Ability-Tracing-Emergent-Abilities-of-Language-Models-to-their-Sources-b9a57ac0fcf74f30a1ab9e3e36fa1dc1)
 
 ### Papers
 
@@ -462,3 +464,7 @@ To further enhance your understanding of large language models, we recommend the
 1. [The Illustrated GPT-2 (Transformer) - Deep Learning for NLP](https://www.youtube.com/watch?v=8rXD5-xhemo)
 2. [BERT Explained: State of the Art Language Model for NLP](https://www.youtube.com/watch?v=xI0HHN5XKDo)
 3. [T5: Text-to-Text Transfer Transformer - Google Research](https://www.youtube.com/watch?v=IttXy9a7CQ0)
+4. [Bill Gates on AI and the rapidly evolving future of computing](https://www.youtube.com/watch?v=bHb_eG46v2c&list=PLkk32AZ8_yoOYLuFpFnpXhmRaK7TjRMp2&index=12)
+5. [Nvidia's GTC Event: Every AI Announcement Revealed in 11 Minutes](https://www.youtube.com/watch?v=tg332P3IfOU&list=PLkk32AZ8_yoOYLuFpFnpXhmRaK7TjRMp2&index=10)
+6. [The Future of Work With AI - Microsoft March 2023 Event](https://www.youtube.com/watch?v=Bf-dbS9CcRU&list=PLkk32AZ8_yoOYLuFpFnpXhmRaK7TjRMp2&index=3)
+7. [Introducting GPT-4](https://www.youtube.com/watch?v=--khbXchTeE)
