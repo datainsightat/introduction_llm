@@ -37,33 +37,57 @@ Large Language Models (LLMs) are primarily based on the Transformer architecture
 
 ### Transformer Architecture
 
-The Transformer architecture was introduced by Vaswani et al. in the paper ["Attention is All You Need"](https://arxiv.org/abs/1706.03762). It consists of two main parts: the encoder and the decoder. Both the encoder and decoder are composed of a stack of identical layers with self-attention mechanisms and feed-forward networks.
+The transformer architecture is a groundbreaking neural network architecture designed for natural language processing (NLP) tasks. It was introduced by Vaswani et al. in the paper "Attention is All You Need." The architecture relies on the self-attention mechanism to process and generate sequences, making it highly efficient and scalable compared to traditional recurrent neural networks (RNNs) and long short-term memory (LSTM) models.
 
-#### Encoder
+#### Components of the Transformer Architecture
 
-The encoder processes the input sequence and generates a continuous representation of the text. It is composed of the following components:
+1. **Input Embeddings**: The input tokens are converted into fixed-size continuous vectors using embeddings.
 
-1. **Multi-Head Self-Attention**: This mechanism allows the model to weigh the importance of different words in the input sequence based on their relevance to the current word being processed. It does this by computing attention scores for each word pair and using these scores to create a context vector.
+2. **Positional Encodings**: Since the transformer architecture lacks any inherent sense of position, positional encodings are added to the input embeddings to provide information about the relative positions of tokens in the sequence.
 
-2. **Position-wise Feed-Forward Networks**: These networks consist of fully connected layers that apply a linear transformation followed by an activation function (usually ReLU) to the output of the multi-head self-attention layer.
+3. **Encoder**: The encoder is composed of a stack of identical layers, each with two sub-layers: a multi-head self-attention mechanism and a position-wise feed-forward network.
 
-3. **Add & Norm**: The output of the multi-head self-attention and feed-forward layers are added to their respective inputs and then normalized using layer normalization.
+4. **Decoder**: The decoder is also made up of a stack of identical layers, with an additional third sub-layer in each that performs multi-head attention over the encoder's output.
 
-4. **Positional Encoding**: To incorporate the position information of the words in the input sequence, a positional encoding is added to the input embeddings before being fed into the first layer of the encoder.
+5. **Output Linear Layer**: The output of the decoder is passed through a linear layer followed by a softmax function to produce the final output probabilities for each token in the target vocabulary.
 
-#### Decoder
+#### Self-Attention Mechanism
 
-The decoder generates the output sequence from the continuous representation created by the encoder. The decoder is similar to the encoder but has an additional multi-head attention layer that attends to the encoder's output. Its components are:
+The self-attention mechanism is a key component of the transformer architecture that enables the model to weigh the importance of each token with respect to others in a sequence. It allows the model to capture long-range dependencies and relationships between tokens without relying on recurrent or convolutional layers. This mechanism is particularly well-suited for natural language processing tasks, as it helps the model to understand the context and structure of the input sequence.
 
-1. **Multi-Head Self-Attention**: Similar to the encoder's self-attention mechanism, this layer computes attention scores for each word pair within the target sequence.
+##### Steps of the Self-Attention Mechanism
 
-2. **Encoder-Decoder Attention**: This layer computes attention scores between the target sequence and the encoder's output, allowing the decoder to focus on relevant parts of the input sequence when generating the output.
+1. **Linear projections**: The input token representations (or embeddings) are projected into three different spaces, known as the query (Q), key (K), and value (V) spaces. These projections are obtained by multiplying the input token representations with three weight matrices (W_Q, W_K, and W_V) that are learned during training.
 
-3. **Position-wise Feed-Forward Networks**: Like the encoder, these networks consist of fully connected layers that apply a linear transformation followed by an activation function.
+2. **Calculating attention scores**: For each token, the dot product of its query vector (Q) with the key vectors (K) of all other tokens in the sequence is computed. This generates a set of attention scores that represent the similarity between the token and every other token in the sequence.
 
-4. **Add & Norm**: The outputs of the multi-head self-attention, encoder-decoder attention, and feed-forward layers are added to their respective inputs and then normalized using layer normalization.
+3. **Scaling and normalization**: The attention scores are scaled by dividing them by the square root of the dimension of the key vectors (usually denoted as d_k). This scaling helps maintain stable gradients during training. After scaling, the scores are passed through a softmax function to normalize them, ensuring they sum to 1.
 
-5. **Positional Encoding**: Similar to the encoder, a positional encoding is added to the input embeddings before being fed into the first layer of the decoder.
+4. **Weighted sum**: The normalized attention scores are used to compute a weighted sum of the value vectors (V) for each token. This step essentially aggregates the contextual information from the entire sequence, with more importance given to tokens with higher attention scores.
+
+5. **Concatenation and linear projection**: Finally, the weighted sum vectors from all tokens are concatenated and passed through a linear projection to generate the output of the self-attention mechanism.
+
+The self-attention mechanism can be applied multiple times in parallel, creating what is known as multi-head attention. This allows the model to capture different aspects of the relationships between tokens, further enhancing its ability to understand the structure and context of the input sequence.
+
+### Example: Machine Translation
+
+Consider a machine translation task where the goal is to translate a sentence from English to French.
+
+**Input**: "Hello, how are you?"
+
+**Output**: "Bonjour, comment ça va?"
+
+1. The input English sentence is tokenized and converted into input embeddings, with positional encodings added to capture the token positions.
+
+2. The embeddings are passed through the encoder layers, where the self-attention mechanism allows the model to weigh the importance of each token with respect to others in the input sequence.
+
+3. The decoder generates the output sequence one token at a time, using the encoder's output and the previously generated tokens as context. The additional attention layer in the decoder allows it to focus on relevant parts of the input sequence while generating each output token.
+
+4. The output tokens are passed through the output linear layer and softmax function, producing probabilities for each token in the target vocabulary.
+
+5. The model selects the tokens with the highest probabilities to form the final translated sentence in French.
+
+The transformer architecture's ability to process input sequences in parallel, rather than sequentially like RNNs and LSTMs, makes it highly efficient and scalable, which has led to its widespread adoption in a variety of NLP tasks and the development of large language models such as GPT, BERT, and T5.
 
 ### Variants of Transformer Architecture
 
