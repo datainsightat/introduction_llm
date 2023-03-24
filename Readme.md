@@ -634,3 +634,4 @@ To further enhance your understanding of large language models, we recommend the
 3. [Nvidia's GTC Event: Every AI Announcement Revealed in 11 Minutes](https://www.youtube.com/watch?v=tg332P3IfOU&list=PLkk32AZ8_yoOYLuFpFnpXhmRaK7TjRMp2&index=10)
 4. [Bill Gates on AI and the rapidly evolving future of computing](https://www.youtube.com/watch?v=bHb_eG46v2c&list=PLkk32AZ8_yoOYLuFpFnpXhmRaK7TjRMp2&index=12)
 5. [OpenAI Co-founder Greg Brockman on ChatGPT, DALL·E and the Impact of Generative AI | SXSW 2023](https://www.youtube.com/watch?v=YtJEfTTD_Y4)
+6. [GPT-4 Creator Ilya Sutskever](https://www.youtube.com/watch?v=SjhIlw3Iffs)
