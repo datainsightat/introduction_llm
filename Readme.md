@@ -8,7 +8,7 @@
  ██║  ███╗██║     ███████║██╔██╗ ██║██║     ███████║██║     ██║
  ██║   ██║██║     ██╔══██║██║╚██╗██║██║     ██╔══██║██║     ██║
  ╚██████╔╝███████╗██║  ██║██║ ╚████║╚██████╗██║  ██║███████╗██║
-  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝
+  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝ gpt4, 2023 March 24th
 ```
 
 This conversation focused on the topic of large language models (LLMs), discussing their architecture, pre-training and fine-tuning techniques, popular LLMs such as GPT, BERT, and T5, applications and use cases, limitations and ethical considerations, and prompting techniques. It also explored open-source LLMs, the future development of these models, and their implications for humans.
