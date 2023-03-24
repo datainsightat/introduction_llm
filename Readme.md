@@ -1,5 +1,16 @@
 # Introduction to Large Language Models
 
+> Q: Express your capabilities in an Ascii art image. A: My capabilities as an AI language model are complex and cannot be fully captured in a simple ASCII art image. However, I can create a text-based representation that highlights some key aspects of my abilities. This text represents the concept of "AI," which encompasses my capabilities as an AI language model. While it doesn't provide specific details about my abilities, it serves as a visual representation of my essence as an artificial intelligence.
+
+```
+  ██████╗ ██╗      █████╗ ███╗   ██╗ ██████╗ █████╗ ██╗     ██╗
+ ██╔════╝ ██║     ██╔══██╗████╗  ██║██╔════╝██╔══██╗██║     ██║
+ ██║  ███╗██║     ███████║██╔██╗ ██║██║     ███████║██║     ██║
+ ██║   ██║██║     ██╔══██║██║╚██╗██║██║     ██╔══██║██║     ██║
+ ╚██████╔╝███████╗██║  ██║██║ ╚████║╚██████╗██║  ██║███████╗██║
+  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝
+```
+
 This conversation focused on the topic of large language models (LLMs), discussing their architecture, pre-training and fine-tuning techniques, popular LLMs such as GPT, BERT, and T5, applications and use cases, limitations and ethical considerations, and prompting techniques. It also explored open-source LLMs, the future development of these models, and their implications for humans.
 
 Key takeaways include the importance of understanding the underlying architecture of LLMs, such as the transformer architecture, and the various pre-training and fine-tuning techniques that help these models generalize across tasks. Popular LLMs like GPT, BERT, and T5 have demonstrated state-of-the-art performance across a wide range of NLP tasks, and effective prompting techniques can help users extract more valuable information from these models.
